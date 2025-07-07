@@ -8,13 +8,13 @@ All this started with a simple question during Fab25 Conference in Brno: Can I c
 
 Mods is a graphical interface to control most machines on Fablabs, enabling you to create workflows assembling different nodes that will load and manipulate input files and connect to digital fabrication machines to produce them.
 
-[https://gitlab.fabcloud.org/pub/project/mods]
+[Project Mods repository](https://gitlab.fabcloud.org/pub/project/mods)
 
 ### What is MCP?
 
 Model Context Protocol is a new open source protocol proposed by Anthorpic to allow LLM to connect to third party sources in a standardized way. This is the general overview of the components of a MCP setup:
 
-![/images/mcp-architecture.png]
+![./images/mcp-architecture.png]
 
 ## Inspiring vision
 
@@ -24,17 +24,17 @@ During last months several pieces have been launched to make this idea possible.
 
 - Design: Blender MCP server enables LLMs to control the Blender interface, so you can describe what you are looking for and have the LLM produce it by controling the Blender interface.
 
-[https://blender-mcp.com]
+[Blender MCP server](https://blender-mcp.com)
 
 - Accessing filesystem: You can have LLMs access to your filesystem, so you can read and can write into the filesystem. This is based on a core module offered in the main MCP repo.
 
-[https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem]
+[Filesystem MCP server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)
 
 - Sending the design to the machine: Mods can be used to load any file from the filesystem and send it to a machine. This is all based on a web interface that handles modules and connections. The connection to the machine is performed via WebUSB and WebSerial working over Chrome browser.
 
 - Controlling the browser: Microsoft has released Playwright MCP server that enables LLM to control the browser. Any browser, like... Chrome.
 
-[https://github.com/microsoft/playwright-mcp]
+[Playwright MCP server](https://github.com/microsoft/playwright-mcp)
 
 ```mermaid
 flowchart TD
@@ -46,14 +46,14 @@ flowchart TD
     Chrome("Chrome Browser (WebUSB/WebSerial)")
     Machine("Digital Fabrication Machine")
 
-    LLM -- "MCP Protocol" --> BlenderMCP
-    LLM -- "MCP Protocol" --> FilesystemMCP
-    LLM -- "MCP Protocol" --> PlaywrightMCP
+    LLM --> "MCP Protocol" --> BlenderMCP
+    LLM --> "MCP Protocol" --> FilesystemMCP
+    LLM --> "MCP Protocol" --> PlaywrightMCP
 
-    FilesystemMCP -- "Files"
-    PlaywrightMCP -- "Control" --> Mods
-    Mods -- "Send to Machine" --> Chrome
-    Chrome -- "WebUSB/WebSerial" --> Machine
+    FilesystemMCP --> "Files"
+    PlaywrightMCP --> "Control" --> Mods
+    Mods --> "Send to Machine" --> Chrome
+    Chrome --> "WebUSB/WebSerial" --> Machine
 ```
 
 ### How should it work
@@ -87,19 +87,19 @@ flowchart LR
     BlenderMCP("Blender MCP Server")
     Blender("Blender Interface")
 
-    LLM -- "MCP Protocol" --> BlenderMCP
-    BlenderMCP -- "Control/API" --> Blender
+    LLM --> "MCP Protocol" --> BlenderMCP
+    BlenderMCP --> "Control/API" --> Blender
 ```
 
 ## Cool things to keep in check
 
-3D Printers: There is an existing MCP tool for managing most 3D Printers: https://dmontgomery40.github.io/Portfolio/Projects/mcp-3D-printer-server.html
+3D Printers: There is an existing MCP tool for managing most 3D Printers: [mcp-3D-printer-server](https://dmontgomery40.github.io/Portfolio/Projects/mcp-3D-printer-server.html)
 
 To use this plugin you need the contact details for your printer API and also setup the route to your slicer executable. The route to configure the Slicer on Mac "/Applications/Original\ Prusa\ Drivers/PrusaSlicer.app/Contents/MacOS/PrusaSlicer"
 
 Sample config.yaml is available with sample printers and slicer.
 
-Laser / CNC machines: There is not such an existing MCP server but... There is mcp2serial server to connect to devices using serial connections: https://github.com/mcp2everything/mcp2serial
+Laser / CNC machines: There is not such an existing MCP server but... There is mcp2serial server to connect to devices using serial connections: [mcp2serial](https://github.com/mcp2everything/mcp2serial)
 
 Sample config.json was developed, that should be compatible with MacOS.
 
@@ -109,7 +109,7 @@ Unfortunately, to test this we need to get a USB to Serial adapter to connect to
 
 In this conversation, I used mcp-blender connection to create a heart shaped figure and export it as STL:
 
-https://claude.ai/share/65307474-ee84-40d8-805b-0c1895eb9557
+[Claude conversation - heart shaped STL](https://claude.ai/share/65307474-ee84-40d8-805b-0c1895eb9557)
 
 Output file was saved into the temp directory. I does indeed look like a heart:
 
@@ -123,6 +123,6 @@ Claude using playwright gets very confused about the UI of mods, as there is a w
 
 Alternative: asked Claude to work on mods.js and setup it up as a mcp server. It proposed some code that could be deployed to interact directly with mods using Javascript/Typescript. Full conversation here: 
 
-https://claude.ai/share/24baaf3f-7074-4428-b6f3-3fcd61a96c4b
+[Claude conversation - mods.js MCP server](https://claude.ai/share/24baaf3f-7074-4428-b6f3-3fcd61a96c4b)
 
 Next step would be packaging it as DXT and try to run it non-programmatically.
