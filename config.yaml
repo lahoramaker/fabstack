@@ -1,0 +1,7 @@
+# Should live under .mcpserial folder in your home directory
+
+serial:
+  port: /dev/tty.debug-console # ls /dev/tty.* to check for serial devices
+  baud_rate: 115200  # Baud rate
+  timeout: 1.0  # Serial timeout (seconds)
+  read_timeout: 0.5  # Read timeout (seconds)

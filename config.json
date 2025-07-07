@@ -1,0 +1,19 @@
+{
+  "printers": [
+    {
+      "name": "Prusa MK3S+",
+      "type": "octoprint",
+      "url": "http://octopi.local",
+      "apiKey": "your-api-key"
+    },
+    {
+      "name": "Voron 2.4",
+      "type": "klipper",
+      "url": "http://voron.local:7125",
+      "apiKey": "your-moonraker-key"
+    }
+  ],
+  "slicers": {
+    "prusaslicer": "/Applications/Original Prusa Drivers/PrusaSlicer.app/Contents/MacOS/PrusaSlicer"
+  }
+}
