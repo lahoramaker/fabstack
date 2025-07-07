@@ -14,7 +14,7 @@ Mods is a graphical interface to control most machines on Fablabs, enabling you 
 
 Model Context Protocol is a new open source protocol proposed by Anthorpic to allow LLM to connect to third party sources in a standardized way. This is the general overview of the components of a MCP setup:
 
-![./images/mcp-architecture.png]
+![MCP Architecture](images/mcp-architecture.png)
 
 ## Inspiring vision
 
@@ -38,22 +38,21 @@ During last months several pieces have been launched to make this idea possible.
 
 ```mermaid
 flowchart TD
-    LLM("LLM (Claude, GPT, etc.)")
-    BlenderMCP("Blender MCP Server")
-    FilesystemMCP("Filesystem MCP Server")
-    PlaywrightMCP("Playwright MCP Server")
-    Mods("Mods (Web Interface)")
-    Chrome("Chrome Browser (WebUSB/WebSerial)")
-    Machine("Digital Fabrication Machine")
+    LLM["LLM (Claude, GPT, etc.)"]
+    BlenderMCP["Blender MCP Server"]
+    FilesystemMCP["Filesystem MCP Server"]
+    PlaywrightMCP["Playwright MCP Server"]
+    Mods["Mods (Web Interface)"]
+    Chrome["Chrome Browser (WebUSB/WebSerial)"]
+    Machine["Digital Fabrication Machine"]
 
-    LLM --> "MCP Protocol" --> BlenderMCP
-    LLM --> "MCP Protocol" --> FilesystemMCP
-    LLM --> "MCP Protocol" --> PlaywrightMCP
-
-    FilesystemMCP --> "Files"
-    PlaywrightMCP --> "Control" --> Mods
-    Mods --> "Send to Machine" --> Chrome
-    Chrome --> "WebUSB/WebSerial" --> Machine
+    LLM -- "MCP Protocol" --> BlenderMCP
+    LLM -- "MCP Protocol" --> FilesystemMCP
+    LLM -- "MCP Protocol" --> PlaywrightMCP
+    FilesystemMCP -- "Files" --> Mods
+    PlaywrightMCP -- "Control" --> Mods
+    Mods -- "Send to Machine" --> Chrome
+    Chrome -- "WebUSB/WebSerial" --> Machine
 ```
 
 ### How should it work
@@ -83,12 +82,12 @@ Then you have to enable it on the sidebar of the viewport, clicking BlenderMCP a
 
 ```mermaid
 flowchart LR
-    LLM("LLM (Claude, Cursor, etc.)")
-    BlenderMCP("Blender MCP Server")
-    Blender("Blender Interface")
+    LLM["LLM (Claude, Cursor, etc.)"]
+    BlenderMCP["Blender MCP Server"]
+    Blender["Blender Interface"]
 
-    LLM --> "MCP Protocol" --> BlenderMCP
-    BlenderMCP --> "Control/API" --> Blender
+    LLM -- "MCP Protocol" --> BlenderMCP
+    BlenderMCP -- "Control/API" --> Blender
 ```
 
 ## Cool things to keep in check
@@ -113,7 +112,7 @@ In this conversation, I used mcp-blender connection to create a heart shaped fig
 
 Output file was saved into the temp directory. I does indeed look like a heart:
 
-![./images/blender-heart]
+![Blender Heart](images/blender-heart.png)
 
 Both mcp2serial and mcp-3d-printer-server require external machines to work.
 
