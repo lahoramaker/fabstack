@@ -114,6 +114,24 @@ Output file was saved into the temp directory. I does indeed look like a heart:
 
 ![Blender Heart](images/blender-heart.png)
 
+**Update!** During the workshop, we asked it to:
+
+It was not able to get the original logo during the first search, so we decided to submit the logo as PNG and try again.
+
+This picture shows the result of the process when providing this input picture:
+
+![Input Fab25 Logo](./images/LOGO4.png)
+
+Resulting STL can be found linked in this very same repo: 
+
+![Fab25 logo in Blender](./images/fab25_logo.png)
+
+[Fab25 Logo STL](./assets/FAB25_Czechia_Logo_8cm.stl)
+
+For reference, you might want to review the [whole log of the conversation](https://claude.ai/share/e81fdbf5-e43c-4f73-96f8-d2b0db41c6c1) to generate the logo.
+
+
+### Priting to external machines
 Both mcp2serial and mcp-3d-printer-server require external machines to work.
 
 ### Testing Mods
@@ -125,3 +143,7 @@ Alternative: asked Claude to work on mods.js and setup it up as a mcp server. It
 [Claude conversation - mods.js MCP server](https://claude.ai/share/24baaf3f-7074-4428-b6f3-3fcd61a96c4b)
 
 Next step would be packaging it as DXT and try to run it non-programmatically.
+
+## Thanks
+
+Thanks to everyone that participated during the workshop and/or showed interest in this topic during the conference. Special thanks to Aristarco for making the colors appear at the Blender interface, once the piece was created.
